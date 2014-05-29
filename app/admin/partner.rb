@@ -1,5 +1,17 @@
 ActiveAdmin.register Partner, { :sort_order => :name_asc } do
 
+    # Scopes
+    scope :all, :default => true
+    scope :New do |new|
+        new.where(:is_new => true)
+    end
+    scope :Current do |current|
+        current.where(:is_current => true)
+    end
+    scope :Denied do |denied|
+        denied.where(:is_denied => true)
+    end
+
     # Permitted parameters
     permit_params :title, :activity_id, :web_site, :contact, :phone, :email, :address, :admin_user_id, :is_new, :is_current, :is_denied
 
