@@ -1,4 +1,4 @@
-ActiveAdmin.register AdminUser do
+ActiveAdmin.register AdminUser, { :sort_order => :name_asc } do
 
     # Permitted parameters
     permit_params :email, :password, :password_confirmation
