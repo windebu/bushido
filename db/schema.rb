@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529110613) do
+ActiveRecord::Schema.define(version: 20140529133711) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20140529110613) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+
+  create_table "activities", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -52,6 +59,25 @@ ActiveRecord::Schema.define(version: 20140529110613) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "partners", force: true do |t|
+    t.string   "title"
+    t.integer  "activity_id"
+    t.string   "web_site"
+    t.string   "contact"
+    t.integer  "phone"
+    t.string   "email"
+    t.string   "address"
+    t.integer  "admin_user_id"
+    t.boolean  "is_new"
+    t.boolean  "is_current"
+    t.boolean  "is_denied"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "partners", ["activity_id"], name: "index_partners_on_activity_id"
+  add_index "partners", ["admin_user_id"], name: "index_partners_on_admin_user_id"
 
   create_table "staffs", force: true do |t|
     t.string   "first_name"
