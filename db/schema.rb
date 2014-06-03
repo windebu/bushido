@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529145210) do
+ActiveRecord::Schema.define(version: 20140529160547) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 20140529145210) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "customers", force: true do |t|
     t.string   "first_name"
@@ -98,6 +105,20 @@ ActiveRecord::Schema.define(version: 20140529145210) do
 
   add_index "partners", ["activity_id"], name: "index_partners_on_activity_id"
   add_index "partners", ["admin_user_id"], name: "index_partners_on_admin_user_id"
+
+  create_table "products", force: true do |t|
+    t.integer  "article_id"
+    t.string   "title"
+    t.text     "description"
+    t.decimal  "price"
+    t.boolean  "featured"
+    t.date     "available"
+    t.string   "image_file_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "products", ["article_id"], name: "index_products_on_article_id"
 
   create_table "providers", force: true do |t|
     t.string   "title"
