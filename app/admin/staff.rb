@@ -1,7 +1,13 @@
 ActiveAdmin.register Staff, { :sort_order => :name_asc } do
 
     # Scopes
-    scope :all, :default => true
+    scope :all, :default => true      # default scope display all staff members
+    scope :Less_of_ten do |staff|     # less of ten display staff members with pay < x (10000 rub)
+        staff.where('pay < ?', 10000)
+    end
+    scope :More_than_ten do |staff|   # more than ten display staff members with pay > x (10000 rub)
+        staff.where('pay > ?', 10000)
+    end
 
     # Permitted parameters
     permit_params :first_name, :last_name, :middle_name, :job_id, :phone, :pay, :start_at, :finish_at
