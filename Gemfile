@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 
-gem 'rails', '4.1.0' 												# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '3.0# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'sqlite3' 														# Use sqlite3 as the database for Active Record
-gem 'sass-rails', '~> 4.0.3' 										# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.3'								# Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0' 											# Use Uglifier as compressor for JavaScript assets
 gem 'coffee-rails', '~> 4.0.0' 										# Use CoffeeScript for .js.coffee assets and views
 gem 'jquery-rails' 													# Use jquery as the JavaScript library
